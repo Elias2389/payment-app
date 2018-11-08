@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.paymentmethod.view.PaymentMethodFragment"
+    android:orientation="vertical"
+    >
+        <com.vinaygaba.creditcardview.CreditCardView
+            android:id="@+id/card1"
+            android:layout_width="330dp"
+            android:layout_height="200dp"
+            android:background="@drawable/cardbackground_world"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            app:cardNumber="5500005555555559"
+            app:cardName="Vinay Gaba"
+            app:cardNumberTextColor="#cccccc"
+            app:cardNumberFormat="masked_all_but_last_four"
+            app:cardNameTextColor="#cccccc"
+            app:type="auto"
+            app:brandLogo="@drawable/ic_launcher_background"
+            app:putChip="true"
+            app:expiryDate = "02/22"
+            app:expiryDateTextColor="#cccccc"
+            app:isEditable="true"
+            app:validTillTextColor="#cccccc"
+            app:hintTextColor = "#cccccc"
+            android:layout_gravity="center"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/general_padding"
+            >
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/name"
+                    android:hint="@string/user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/card_number"
+                    android:hint="@string/card_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
