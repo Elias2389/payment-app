@@ -49,8 +49,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:textSize="30sp"
-                    android:text="prueba"
+                    android:textSize="25sp"
                     >
                 </TextView>
 

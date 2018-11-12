@@ -26,4 +26,7 @@
     <string name="fee_selected">Cuotas</string>
     <string name="blank_field">Debe ingresar un monto</string>
     <string name="charge">Cargando</string>
+    <string name="next_button">siguiente</string>
+    <string name="complete">completado</string>
+    <string name="back">atras</string>
 </resources>

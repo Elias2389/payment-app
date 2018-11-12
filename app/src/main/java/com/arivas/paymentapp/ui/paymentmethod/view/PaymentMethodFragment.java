@@ -80,10 +80,9 @@ public class PaymentMethodFragment extends Fragment implements Step, PaymentMeth
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getPaymentMethods();
+                pickerUI.slide();
             }
         });
-
 
         pickerUI.setOnClickItemPickerUIListener(new PickerUI.PickerUIItemClickListener() {
             @Override

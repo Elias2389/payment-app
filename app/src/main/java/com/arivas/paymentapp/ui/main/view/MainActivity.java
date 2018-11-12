@@ -10,7 +10,7 @@ import com.arivas.paymentapp.adapter.StepAdapter;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
-public class MainActivity extends AppCompatActivity implements StepperLayout.StepperListener {
+public class MainActivity extends AppCompatActivity  {
     private StepperLayout stepperLayout;
 
 
@@ -23,23 +23,4 @@ public class MainActivity extends AppCompatActivity implements StepperLayout.Ste
         stepperLayout.setAdapter(new StepAdapter(getSupportFragmentManager(), this));
     }
 
-    @Override
-    public void onCompleted(View completeButton) {
-        Toast.makeText(this,"Aqui",Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onError(VerificationError verificationError) {
-
-    }
-
-    @Override
-    public void onStepSelected(int newStepPosition) {
-
-    }
-
-    @Override
-    public void onReturn() {
-
-    }
 }
