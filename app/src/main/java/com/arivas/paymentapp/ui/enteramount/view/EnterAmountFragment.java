@@ -5,19 +5,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arivas.paymentapp.R;
-import com.arivas.paymentapp.provider.DataProvider;
-import com.hanks.passcodeview.CircleView;
+import com.arivas.paymentapp.model.paymentmethod.UserPayData;
+import com.arivas.paymentapp.network.DataProvider;
+import com.arivas.paymentapp.utils.ErrorHandleMessage;
 import com.stepstone.stepper.BlockingStep;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.StepperLayout;
@@ -26,18 +24,20 @@ import com.stepstone.stepper.VerificationError;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EnterAmountFragment extends Fragment implements Step, View.OnClickListener, BlockingStep {
+public class EnterAmountFragment extends Fragment implements Step, View.OnClickListener,
+        BlockingStep, EnterAmountFragmentView {
 
     private TextView layout_text;
     private TextView tv_input_tip;
     private TextView number0, number1, number2, number3, number4, number5, number6, number7, number8, number9;
-    private ImageView numberB, numberOK;
+    private ImageView numberB;
     private ImageView iv_lock, iv_ok;
     private View cursor;
+    UserPayData userPayData;
     private View view;
+    private DataProvider data;
     private String firstInputTip = "Ingrese el monto";
     private int numberTextColor = 0xFF747474;
-    private DataProvider dataProvider;
 
 
     public EnterAmountFragment() {
@@ -50,13 +50,14 @@ public class EnterAmountFragment extends Fragment implements Step, View.OnClickL
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_enter_amount, container, false);
+        userPayData = new UserPayData();
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        dataProvider = DataProvider.getInstance();
+        data = DataProvider.getInstance();
         init();
     }
 
@@ -82,7 +83,6 @@ public class EnterAmountFragment extends Fragment implements Step, View.OnClickL
         number7 = (TextView) view.findViewById(R.id.number7);
         number8 = (TextView) view.findViewById(R.id.number8);
         number9 = (TextView) view.findViewById(R.id.number9);
-        numberOK = (ImageView) view.findViewById(R.id.numberOK);
         numberB = (ImageView) view.findViewById(R.id.numberB);
 
         number0.setOnClickListener(this);
@@ -102,12 +102,7 @@ public class EnterAmountFragment extends Fragment implements Step, View.OnClickL
                 removeNumber();
             }
         });
-        numberOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),"Listo",Toast.LENGTH_LONG).show();
-            }
-        });
+
 
         number0.setTag(0);
         number1.setTag(1);
@@ -147,14 +142,16 @@ public class EnterAmountFragment extends Fragment implements Step, View.OnClickL
         if (textAmount.length() > 0) {
             layout_text.setText(textAmount.substring(0, textAmount.length() -1));
         }
-
     }
-
 
     @Override
     public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
-        dataProvider.setDataAmount(Float.valueOf(layout_text.getText().toString()));
-        callback.goToNextStep();
+        if (layout_text.getText().toString().equals("")) {
+            Toast.makeText(getContext(),getString(R.string.blank_field), Toast.LENGTH_LONG).show();
+        } else {
+            data.setDataAmount(Double.valueOf(layout_text.getText().toString()));
+            callback.goToNextStep();
+        }
     }
 
     @Override
@@ -181,5 +178,10 @@ public class EnterAmountFragment extends Fragment implements Step, View.OnClickL
     @Override
     public void onError(@NonNull VerificationError error) {
 
+    }
+
+    @Override
+    public void failed() {
+        ErrorHandleMessage.getInstance().generalError(getContext());
     }
 }

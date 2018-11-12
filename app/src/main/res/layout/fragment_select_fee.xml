@@ -27,8 +27,9 @@
 
 
         <FrameLayout
+            android:id="@+id/pant"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:layout_marginTop="32dp">
 
             <View
@@ -44,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 >
             </TextView>
         </FrameLayout>
@@ -60,16 +61,6 @@
             android:background="@drawable/lock_bg_white"
             android:padding="48dp"
             android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/icon_fee"
-                style="@style/NumberInPasscode"
-                android:scaleType="centerInside"
-                android:layout_gravity="center"
-                android:tint="#FF8A8A8A"
-                app:srcCompat="@drawable/backspace"
-
-                />
 
         </LinearLayout>
 

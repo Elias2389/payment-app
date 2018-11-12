@@ -136,14 +136,14 @@
                 android:layout_centerHorizontal="true"
                 android:text="0"/>
 
-            <ImageView
-                android:id="@+id/numberOK"
-                style="@style/NumberInPasscode"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/number7"
-                android:scaleType="centerInside"
-                android:tint="#FF8A8A8A"
-                app:srcCompat="@drawable/ic_check_bold_24dp"/>
+            <!--<ImageView-->
+                <!--android:id="@+id/numberOK"-->
+                <!--style="@style/NumberInPasscode"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_below="@id/number7"-->
+                <!--android:scaleType="centerInside"-->
+                <!--android:tint="#FF8A8A8A"-->
+                <!--app:srcCompat="@drawable/ic_check_bold_24dp"/>-->
 
         </RelativeLayout>
 

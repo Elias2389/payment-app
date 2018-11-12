@@ -16,7 +16,13 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField 'String', 'BASE_URL', BASE_URL
+            buildConfigField 'String', 'PRIVATE_KEY', PRIVATE_KEY
+        }
         release {
+            buildConfigField 'String', 'BASE_URL', BASE_URL
+            buildConfigField 'String', 'PRIVATE_KEY', PRIVATE_KEY
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -61,6 +67,15 @@ dependencies {
 
     //PickerUi
     implementation 'com.github.davidpizarro:pickerui:1.0.1'
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Alert
+    implementation 'com.tapadoo.android:alerter:2.0.1'
+
+    //Loading toast
+    implementation 'net.steamcrafted:load-toast:1.0.12'
 
 
 }
